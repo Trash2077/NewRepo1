@@ -1,0 +1,29 @@
+<!-- catalog/category_detail.html -->
+{% extends "app/layout.html" %}
+
+{% block title %}{{ category.name }}{% endblock %}
+
+{% block content %}
+
+<style>
+    .small-image {
+        width: 100px; /* Ширина изображения */
+        height: 100px; /* Высота изображения */
+    }
+</style>
+<h1>{{ category.name }}</h1>
+<ul>
+    {% for product in products %}
+    <li>
+        <h2>{{ product.name }}</h2>
+        <p>{{ product.description }}</p>
+        <img class="small-image" src="{{ product.image.url }}" alt="{{ product.name }}">
+        <form action="{% url 'add_to_cart' product.id %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Добавить в корзину</button>
+        </form>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

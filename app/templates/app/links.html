@@ -1,0 +1,42 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+{% load static %}
+
+<style>
+    .image-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-right: 20px; /* Добавьте отступ между элементами */
+    }
+
+    .image-list {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .resized-image {
+        width: 100px; /* Установите нужную ширину */
+        height: auto; /* Автоматическое изменение высоты для сохранения пропорций */
+    }
+</style>
+
+<h2>{{ title }}.</h2>
+<div class="image-list">
+    <div class="image-container">
+        <a href="https://www.python.org/" target="_blank"><img src="{% static 'app/content/python.jpg' %}" class="resized-image"></a>
+        <p>Сайт python. Там можно найти полезную информацию</p>
+    </div>
+    <div class="image-container">
+        <a href="https://developer.mozilla.org/ru/docs/Web/HTML" target="_blank"><img src="{% static 'app/content/html.jpg' %}" class="resized-image"></a>
+        <p>Сайт с документацией разных веб технологий. По этой ссылке вы перейдёте к документации HTML</p>
+    </div>
+    <div class="image-container">
+        <a href="https://learn.microsoft.com/ru-ru/cpp/cpp/?view=msvc-170" target="_blank"><img src="{% static 'app/content/c++.jpg' %}" class="resized-image"></a>
+        <p>Документация по с++, хорошее место для начала.</p>
+    </div>
+</div>
+
+{% endblock %}
